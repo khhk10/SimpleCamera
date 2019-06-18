@@ -43,5 +43,7 @@
 	</array>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>撮影した写真を保存します</string>
+	<key>NSCameraUsageDescription</key>
+    <string>カメラを使用します</string>
 </dict>
 </plist>

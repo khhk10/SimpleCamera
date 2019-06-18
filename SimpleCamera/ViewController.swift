@@ -4,9 +4,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     @IBOutlet weak var imageView: UIImageView!
     
+    // 画像が正方形に変更されたかどうか
+    var isSquare = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 初期設定
+        self.imageView.frame.size = CGSize(width: self.view.bounds.width, height: 600)
+        self.imageView.center = self.view.center
     }
     
     @IBAction func launchCamera(_ sender: UIBarButtonItem) {
@@ -32,7 +38,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // モーダルビューを消去
         self.dismiss(animated: true)
     }
-
-
+    
+    @IBAction func tapView(_ sender: UITapGestureRecognizer) {
+        print("##tapView")
+        
+        // アニメーション
+        UIView.animate(withDuration: 1.0, delay: 0, options: [.curveEaseInOut], animations: {
+            
+            if self.isSquare {
+                // 正方形から拡大する
+                self.imageView.frame.size = CGSize(width: self.view.bounds.width, height: 600)
+                self.imageView.layer.cornerRadius = 0.0
+                self.imageView.center = self.view.center
+                self.isSquare = false
+            } else {
+                // 正方形に縮小する
+                self.imageView.frame.size = CGSize(width: 250, height: 250)
+                self.imageView.layer.cornerRadius = 20.0
+                // 位置
+                self.imageView.center = self.view.center
+                self.isSquare = true
+            }
+        }, completion: nil)
+    }
+    
 }
 
