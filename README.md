@@ -1,5 +1,5 @@
 # SimpleCamera
-Simple camera using UIImagePickerController
+Simple camera and viewer
 
 - camera by UIImagePickerController
 - changes preview size with animation
